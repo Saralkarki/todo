@@ -5,6 +5,7 @@ class TodoListsController < ApplicationController
   # GET /todo_lists.json
   def index
     @todo_lists = TodoList.all
+    # puts ">>>>>>> #{@todo_lists.class}"
   end
 
   # GET /todo_lists/1
@@ -33,6 +34,7 @@ class TodoListsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @todo_list.errors, status: :unprocessable_entity }
+      
       end
     end
   end
