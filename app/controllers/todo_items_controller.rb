@@ -1,5 +1,7 @@
 class TodoItemsController < ApplicationController
     before_action :set_todo_list
+    before_action :set_todo_item, except: [:create]
+
     def create
         @todo_item = @todo_list.todo_items.new(todo_items_params)
     respond_to do |format|  
@@ -21,18 +23,18 @@ class TodoItemsController < ApplicationController
     end
 
     def update
+        @todo_item = @todo_list.todo_items.find(params[:id])
         respond_to do |format|  
             if @todo_item.update(todo_items_params)
-                format.html { redirect_to @todo_list, notice: 'Update was sucessful' }
-                format.json { render :show, status: :created, location: @todo_list }
+                format.html { redirect_to @todo_list, notice: 'Update was sucessful' }              
             else
-                format.html { redirect_to @todo_list, notice: 'Could not updates' }
-                format.json { render :show, status: :created, location: @todo_list }
+                format.html { render :edit , notice: "could not update"}
+                
             end
         end
     end
     def destroy
-        @todo_item = @todo_list.todo_items.find(params[:id])
+        # @todo_item = @todo_list.todo_items.find(params[:id])
         if @todo_item.destroy
          flash[:success] = "Todo List item was deleted."
         else
@@ -41,10 +43,18 @@ class TodoItemsController < ApplicationController
         redirect_to @todo_list 
        end
 
+    def complete
+        @todo_item.update_attribute(:completed_at,Time.now)
+        redirect_to @todo_list, notice: "Completed task"
+    end
     private 
     def set_todo_list
         @todo_list = TodoList.find(params[:todo_list_id])
         # puts ">>>>>>" @todo_list
+    end
+
+    def set_todo_item
+        @todo_item = @todo_list.todo_items.find(params[:id])
     end
 
     def todo_items_params 
