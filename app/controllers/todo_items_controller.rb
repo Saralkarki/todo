@@ -19,11 +19,11 @@ class TodoItemsController < ApplicationController
     #     redirect_to @todo_list
     # end
     def edit
-        
+        @todo_item = @todo_list.todo_items.find(params[:id])
+        puts @todo_item
     end
 
     def update
-        @todo_item = @todo_list.todo_items.find(params[:id])
         respond_to do |format|  
             if @todo_item.update(todo_items_params)
                 format.html { redirect_to @todo_list, notice: 'Update was sucessful' }              
