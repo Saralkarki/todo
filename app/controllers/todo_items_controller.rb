@@ -16,7 +16,21 @@ class TodoItemsController < ApplicationController
     #     @todo_item = @todo_list.todo_items.create(todo_items_params)
     #     redirect_to @todo_list
     # end
+    def edit
+        
+    end
 
+    def update
+        respond_to do |format|  
+            if @todo_item.update(todo_items_params)
+                format.html { redirect_to @todo_list, notice: 'Update was sucessful' }
+                format.json { render :show, status: :created, location: @todo_list }
+            else
+                format.html { redirect_to @todo_list, notice: 'Could not updates' }
+                format.json { render :show, status: :created, location: @todo_list }
+            end
+        end
+    end
     def destroy
         @todo_item = @todo_list.todo_items.find(params[:id])
         if @todo_item.destroy
