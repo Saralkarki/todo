@@ -1,3 +1,15 @@
 // Place all the styles related to the todo_lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.title{
+    text-align:center;
+}
+.todo_lists{
+    text-align:center;
+}
+.list_background{
+    background: #374B4A;
+    border-radius: 5px;
+    margin-top:10px;
+    padding:10px;
+}

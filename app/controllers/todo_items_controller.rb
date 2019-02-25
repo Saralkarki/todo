@@ -20,7 +20,7 @@ class TodoItemsController < ApplicationController
     # end
     def edit
         @todo_item = @todo_list.todo_items.find(params[:id])
-        puts @todo_item
+        # puts @todo_item
     end
 
     def update
@@ -41,7 +41,7 @@ class TodoItemsController < ApplicationController
          flash[:error] = "Todo List item could not be deleted."
         end
         redirect_to @todo_list 
-       end
+    end
 
     def complete
         @todo_item.update_attribute(:completed_at,Time.now)

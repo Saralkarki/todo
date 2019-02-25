@@ -5,6 +5,7 @@ class TodoListsController < ApplicationController
   # GET /todo_lists.json
   def index
     @todo_lists = TodoList.all
+    @todo_item = @todo_list.todo_items.all
     # puts ">>>>>>> #{@todo_lists.class}"
   end
 
@@ -56,7 +57,10 @@ class TodoListsController < ApplicationController
   # DELETE /todo_lists/1
   # DELETE /todo_lists/1.json
   def destroy
+    # @todo_item = @todo_list.todo_items.all
+    # puts ">>>>>#{@todo_item.length}>>>>"
     @todo_list.destroy
+    # check if the list is empty or not  
     respond_to do |format|
       format.html { redirect_to todo_lists_url, notice: 'Todo list was successfully destroyed.' }
       format.json { head :no_content }
