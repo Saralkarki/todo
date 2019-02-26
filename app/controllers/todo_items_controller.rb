@@ -14,10 +14,12 @@ class TodoItemsController < ApplicationController
         end
     end
     end
+
     # def create
     #     @todo_item = @todo_list.todo_items.create(todo_items_params)
     #     redirect_to @todo_list
     # end
+
     def edit
         @todo_item = @todo_list.todo_items.find(params[:id])
         # puts @todo_item
@@ -33,6 +35,7 @@ class TodoItemsController < ApplicationController
             end
         end
     end
+    
     def destroy
         # @todo_item = @todo_list.todo_items.find(params[:id])
         if @todo_item.destroy
@@ -45,7 +48,7 @@ class TodoItemsController < ApplicationController
 
     def complete
         @todo_item.update_attribute(:completed_at,Time.now)
-        redirect_to @todo_list, notice: "Completed task"
+        redirect_to root_path, notice: "Completed task"
     end
     private 
     def set_todo_list

@@ -1,32 +1,56 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
   <div class= "title">
-  <h1>Todo Lists</h1> 
-<%=  button_to 'New Todo List', new_todo_list_path, method: :get , class:"btn btn-primary" %> 
-</div>
+    <h1>Todo Lists</h1> 
+    <%=  button_to 'New Todo List', new_todo_list_path, method: :get , class:"btn btn-primary" %> 
+  </div>
 </br>
-<table class="table table-dark">
-  <thead class="thead-light">
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  
-  <div class = "todo_lists">
-  <tbody>
-    <% @todo_lists.each do |todo_list| %>
+<div class = "table-responsive">
+  <% if @todo_lists.length > 0 %>
+  <table class="table table-dark responsive">
+    <thead class="thead-light">
       <tr>
-        <td><%= todo_list.title %></td>
-        <td><%= todo_list.description %></td>
-        <td><%= link_to 'Show', todo_list %></td>
-        <td><%= link_to 'Edit', edit_todo_list_path(todo_list) %></td>
-        <td><%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Description</th>
+        <th colspan="4"></th>
       </tr>
+    </thead>
+    <% else %>
+      <h1> <center>The List is empty</center></h1>
+    <% end %>     
+    <tbody class="list_background">
+      <% @todo_lists.each do |todo_list| %>
+        <tr>
+          <td><%= todo_list.title %></td>
+          <td><%= todo_list.description %></td>
+          <td><%= link_to 'Show', todo_list %></td>
+          <td><%= link_to 'Edit', edit_todo_list_path(todo_list) %></td>
+          <td><%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+          <% @todo_items.each do |item|%>
+            <% if todo_list.id == item.todo_list_id%>
+              <tr class="items">
+                <td colspan="1" style= "background :#374B4A"></td>
+                <% if item.completed?%>
+                  <td class="items"><strike> <%= item.content%></strike> </td>
+                <% else %>
+                  <td > <%= item.content%> </td>
+                <%end %>
+                  <%# <td> <%= todo_list.id %> 
+                  <%# </td> %>
+                  <%# <td> <%= item.id%>
+                  <%# </td>  %>
+                  <td> <%= link_to 'Edit', edit_todo_list_todo_item_path(todo_list.id, item.id)  %></td>
+                  <td><%= link_to "Delete", todo_list_todo_item_path(todo_list.id, item.id), method: :delete, data: { confirm: "Are you sure?" } %>
+                  <td><%= link_to "Complete", complete_todo_list_todo_item_path(todo_list.id, item.id),method: :patch %></td>
+                  </td>
+              </tr>
+            <% end %>
+        <% end %>     
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+  </div>
 </div>
 <br>
 <%# <div class="title">

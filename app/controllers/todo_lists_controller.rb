@@ -5,7 +5,8 @@ class TodoListsController < ApplicationController
   # GET /todo_lists.json
   def index
     @todo_lists = TodoList.all
-    @todo_item = @todo_list.todo_items.all
+    @todo_items = TodoItem.all
+    # @todo_item = @todo_list.todo_items.all
     # puts ">>>>>>> #{@todo_lists.class}"
   end
 
@@ -21,6 +22,7 @@ class TodoListsController < ApplicationController
 
   # GET /todo_lists/1/edit
   def edit
+    
   end
 
   # POST /todo_lists
@@ -58,7 +60,7 @@ class TodoListsController < ApplicationController
   # DELETE /todo_lists/1.json
   def destroy
     # @todo_item = @todo_list.todo_items.all
-    # puts ">>>>>#{@todo_item.length}>>>>"
+    # puts ">>>>>#{@todo_item}>>>>"
     @todo_list.destroy
     # check if the list is empty or not  
     respond_to do |format|

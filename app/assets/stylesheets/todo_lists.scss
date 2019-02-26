@@ -8,8 +8,18 @@
     text-align:center;
 }
 .list_background{
-    background: #374B4A;
+    background:#4D7C8A;
     border-radius: 5px;
     margin-top:10px;
     padding:10px;
 }
+.items{
+    margin-left:100px;
+    border: 0;
+    background: #374B4A;
+    border-color:  #374B4A;
+}
+.items:hover{
+    background: #4D7C8A;
+}
+
