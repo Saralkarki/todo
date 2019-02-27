@@ -10,18 +10,27 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+<div class="col-md-4 offset-md-4">
+<h4><%= link_to 'Back', todo_lists_path , class: 'back-link'%> </h4>
+  <div class="fields form-group">
+    <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :todo_list_title, required: true %>
+    <%= form.text_field :title, id: :todo_list_title, :class => 'form-control', placeholder: "Todo",required: true %>
   </div>
+  </br>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :todo_list_description, required: true  %>
+    <%= form.text_area :description, id: :todo_list_description, :class => 'form-control', rows: "17",  placeholder: "Description", required: true  %>
   </div>
-
+  </br>
   <div class="actions">
-    <%= form.submit "Submit"%>
+    <%= form.submit "Submit" ,:class => 'btn btn-success'%>
   </div>
+  <div>
+   
+  
+
+</div>
 <% end %>
+

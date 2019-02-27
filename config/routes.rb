@@ -7,6 +7,11 @@ Rails.application.routes.draw do
         patch :complete
       end
     end
+    resources :todo_items do
+      member do
+          patch :incomplete
+      end
+  end 
   end
 
   root "todo_lists#index"

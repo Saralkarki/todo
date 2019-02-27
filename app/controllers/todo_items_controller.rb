@@ -6,7 +6,8 @@ class TodoItemsController < ApplicationController
         @todo_item = @todo_list.todo_items.new(todo_items_params)
     respond_to do |format|  
         if @todo_item.save
-            format.html { redirect_to @todo_list, notice: 'Todo list was successfully created.' }
+            format.html { redirect_to @todo_list}
+            #  notice: 'Todo list was successfully created.' }
             format.json { render :show, status: :created, location: @todo_list }
         else
             format.html { redirect_to @todo_list, notice: 'Could not save' }
@@ -28,7 +29,7 @@ class TodoItemsController < ApplicationController
     def update
         respond_to do |format|  
             if @todo_item.update(todo_items_params)
-                format.html { redirect_to @todo_list, notice: 'Update was sucessful' }              
+                format.html { redirect_to @todo_list} 
             else
                 format.html { render :edit , notice: "could not update"}
                 
@@ -48,7 +49,12 @@ class TodoItemsController < ApplicationController
 
     def complete
         @todo_item.update_attribute(:completed_at,Time.now)
-        redirect_to root_path, notice: "Completed task"
+        redirect_to root_path
+    end
+
+    def incomplete
+        @todo_item.update_attribute(:completed_at, nil)
+        redirect_to root_path
     end
     private 
     def set_todo_list

@@ -1,22 +1,47 @@
-<p id="notice"><%= notice %></p>
-
+<!--<p id="notice"><%= notice %></p> -->
+<table class="table table-striped">
+<thead>
 <p>
-  <strong>Title:</strong>
-  <%= @todo_list.title %>
-</p>
-
-<p>
+  <th><h4><strong>Title:</strong>
+  <%= @todo_list.title.capitalize %></br></h4>
   <strong>Description:</strong>
-  <%= @todo_list.description %>
-</p>
-<p>
-    <%= render @todo_list.todo_items %>
-</p>
-<p>
-  <%= render "todo_items/form" %>
-</P>
+  <%= @todo_list.description.capitalize %></br></br>
+  <%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
+  <%= link_to 'Back', todo_lists_path %>
+</p></th>
+</thead>
+  <div style=" display:none"> <%= render @todo_list.todo_items %></div>
 
 
-<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
-<%= link_to 'Back', todo_lists_path %>
-
+<table class="table responsive">
+<% @todo_items.each do |item|%>
+            <% if @todo_list.id == item.todo_list_id%>
+              <tr class = "table-borderless table-sm ">
+                <td colspan="1" style= "background :#ffffff"></td>
+                <% if item.completed?%>
+                  <td><strike class="complete"> <%= item.content.capitalize%></strike> </td>
+                <% else %>
+                  <td> <%= item.content.capitalize%> </td>
+                <%end %>
+                <td  class="todo_items" ><%= link_to complete_todo_list_todo_item_path(@todo_list.id, item.id),method: :patch do%>
+                  <i class="fa fa-check-circle item-icons" ></i><% end %>
+                  </td>
+                  <td class="todo_items" > <%= link_to edit_todo_list_todo_item_path(@todo_list.id, item.id)  do %>
+                  <i class="fa fa-pencil item-icons" ></i>
+                  <% end %>
+                  </td>                  
+                  <td class="todo_items" >
+                  <%= link_to todo_list_todo_item_path(@todo_list.id, item.id), method: :delete, data: { confirm: "Are you sure?" } do%>
+                  <i class="fa fa-trash item-icons"></i>
+                  <% end %>
+                  </td>                 
+              </tr>
+            <% end %>
+<%end%>
+</table>
+</br>
+<center>
+<div>
+<%= render "todo_items/form" %>
+</div>
+</center>

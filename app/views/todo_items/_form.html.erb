@@ -1,5 +1,4 @@
-
-<%= form_for([@todo_list,@todo_list.todo_items.build])  do |f| %>
-    <%= f.text_field :content, placeholder: "Todo Item" %>
-    <%= f.submit "Submit"%>
-<% end %>
+  <%= form_for([@todo_list,@todo_list.todo_items.build])  do |f| %>
+        <%= f.text_field :content, placeholder: "Add a Todo Item and hit enter" , autofocus: "on", class:"form-control todo_item", required: true%></br>
+        <%= f.submit "Submit", class:"btn btn-primary"%>
+    <% end %>
