@@ -44,7 +44,7 @@ class TodoItemsController < ApplicationController
         else
          flash[:error] = "Todo List item could not be deleted."
         end
-        redirect_to @todo_list 
+        redirect_to root_path
     end
 
     def complete
