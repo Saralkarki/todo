@@ -26,6 +26,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 gem 'ckeditor'
 gem 'devise', '~> 4.6', '>= 4.6.1'
+gem 'simple_calendar', '~> 2.3'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
