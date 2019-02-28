@@ -7,13 +7,21 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
-  <nav class="navbar">
+  <header class="row">
+  <nav class="navbar col-sm-6">
+   <%= link_to todo_lists_path , method: :get do %>
+    <i class="fa fa-chevron-left back"></i>
+  <% end %></nav>
+  <nav class="navbar col-sm-6"> 
     <% if user_signed_in? %>
-      <%= link_to 'Edit User', edit_user_registration_path %>   
-      
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>   
-      
+      <ul class = "navbar ml-auto ">
+        <%# <li class="nav-item"> <%= link_to 'Edit User-Info', edit_user_registration_path , class:"nav-link"%>     
+        <li class="nav-item"> 
+          <%= link_to destroy_user_session_path, method: :delete do %>   
+            <i class="fa fa-sign-out logout"></i>
+          <% end %>
+        </li>
+      </ul>      
     <% else %>
       <%= link_to 'Sign In', new_user_session_path %>  
     <% end %>  

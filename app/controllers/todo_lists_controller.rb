@@ -1,6 +1,6 @@
 class TodoListsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo_list, only: [:show, :edit, :update, :destroy, :complete, :incomplete]
 
   # GET /todo_lists
   # GET /todo_lists.json
@@ -35,7 +35,7 @@ class TodoListsController < ApplicationController
 
     respond_to do |format|
       if @todo_list.save
-        format.html { redirect_to @todo_list }
+        format.html { redirect_to root_path }
         format.json { render :show, status: :created, location: @todo_list }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class TodoListsController < ApplicationController
   def update
     respond_to do |format|
       if @todo_list.update(todo_list_params)
-        format.html { redirect_to @todo_list}
+        format.html { redirect_to root_path}
         format.json { render :show, status: :ok, location: @todo_list }
       else
         format.html { render :edit }
@@ -71,6 +71,18 @@ class TodoListsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def complete
+   
+    @todo_list.update_attribute(:completed_at,Time.now)
+    redirect_to root_path
+  end
+
+def incomplete
+    @todo_list.update_attribute(:completed_at,nil)
+    redirect_to root_path
+end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,63 +1,61 @@
 // Place all the styles related to the todo_lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.title{
-    text-align:center;
+
+//lists css
+.list_item{
+    background: white;
+    border: 6px solid black;
+    box-shadow: 5px 10px #888888;
+    width: 95%;
+    height: 120px;
+    border-radius: 10px;
+    margin-bottom: 30px;   
+
+    .list_title{
+        margin: 20px 0 0 30px;
+        color:black;
+        font-size: 1.5em;
+    }
+    .item-icons{
+        margin-top: 30px;
+        margin-right: 20px;
+    }
+    .uncheck{
+        color: green;
+        font-size: 1.5em;      
+    }
+    .check{
+        color: green;
+        font-size: 1.5em;
+       
+    }
+    .trash{
+        color: red;
+        font-size: 1.5em;  
+    }
+    .pencil{
+        color: blue;
+        font-size: 1.5em;  
+    }
 }
-.todo_lists{
-    text-align:center;
+.add_item{
+    font-size: 100px;
+    margin:10px 0 0 45%;
+    color: skyblue;
 }
-.list_row{
-    background: rgb(96, 154, 161);
-    margin-top:10px;
-    padding:10px;
+.logout{
+    font-size: 100px;
+    margin:10px 0 0 0;
 }
-.items{
-    background: #918383a2;
-    opacity:0.3; 
-}
-.table-sm:hover{
-    background: #CBDF90;
-    border: 0;
-}
-a{
-    color:  #000;
-}
-.item-icons{
-    color: darkblue;
+.back{
+    font-size: 100px;
+    margin:10px 0 0 30px;
 }
 
-.complete{
-    opacity: 0.3;
-}
-.table_container{
-    border: 3px solid #524848a8;
-    border-radius: 10px;
-}
-.fields{
-    background:rgb(131, 184, 235);
-    border: 1px solid white;
-    border-radius: 10px;
-    padding: 20px;
-}
-textarea[id = todo_list_description]{  
-    resize: none;
-}
-.actions{
-    text-align:center;
-}
-.back-link:hover{
-    text-decoration: none;
-    color: rgb(145, 190, 237);
-}
-.back-link{
-    color:rgb(131, 184, 235);
-}
-.todo_items{
-    width:40px;
-
-}
-.list_col{
-    width: 40px;
+//Form page css
+.form-control{
+    width: 600px;
+    background:red;
 }
 

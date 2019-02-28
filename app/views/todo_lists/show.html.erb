@@ -5,7 +5,7 @@
   <th><h4><strong>Title:</strong>
   <%= @todo_list.title.capitalize %></br></h4>
   <strong>Description:</strong>
-  <%= @todo_list.description.capitalize %></br></br>
+  <%# <%= @todo_list.description %</br></br> --%>
   <%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
   <%= link_to 'Back', todo_lists_path %>
 </p></th>
