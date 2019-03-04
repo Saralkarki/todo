@@ -1,5 +1,5 @@
   <%= form_for([@todo_list,@todo_list.todo_items.build])  do |f| %>
-        <%= f.text_field :content, placeholder: "Add a Todo Item and hit enter" , autofocus: "on", class:"form-control todo_item", required: true%></br>
+        <%= f.text_field :content, placeholder: "Add a Todo Item " , autofocus: "on", class:"form-control todo_item", required: true%></br>
         <%= f.submit "Submit", class:"btn btn-primary"%>
-        <%= link_to "Back" , root_path , :class => "btn btn-danger", method: :get %>
+        <%# <%= link_to "Back" , root_path , :class => "btn btn-danger", method: :get %> 
     <% end %>

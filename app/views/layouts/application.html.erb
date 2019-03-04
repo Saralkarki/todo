@@ -8,12 +8,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header class="row">
-  <nav class="navbar col-sm-6">
-   <%= link_to todo_lists_path , method: :get do %>
-    <i class="fa fa-chevron-left back"></i>
-  <% end %></nav>
-  <nav class="navbar col-sm-6"> 
+ 
+  <nav class="navbar col-sm-12"> 
     <% if user_signed_in? %>
+       <nav class="navbar col-sm-6">
+  <%# <%= link_to 'javascript:history.back()' do %>
+    <%=link_to root_path do %>
+    <i class="fa fa-home back"></i>
+    <% end %>
+  </nav>
       <ul class = "navbar ml-auto ">
         <%# <li class="nav-item"> <%= link_to 'Edit User-Info', edit_user_registration_path , class:"nav-link"%>     
         <li class="nav-item"> 

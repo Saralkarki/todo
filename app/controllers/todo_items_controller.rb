@@ -45,17 +45,17 @@ class TodoItemsController < ApplicationController
         else
          flash[:error] = "Todo List item could not be deleted."
         end
-        redirect_to root_path
+        redirect_to @todo_list
     end
 
     def complete
         @todo_item.update_attribute(:completed_at,Time.now)
-        redirect_to root_path
+        redirect_to @todo_list
     end
 
     def incomplete
         @todo_item.update_attribute(:completed_at, nil)
-        redirect_to root_path
+        redirect_to @todo_list
     end
     private 
     def set_todo_list

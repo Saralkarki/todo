@@ -5,8 +5,9 @@ class TodoListsController < ApplicationController
   # GET /todo_lists
   # GET /todo_lists.json
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = TodoList.all.order('completed_at DESC')
     @todo_items = TodoItem.all
+   
     # @todo_item = @todo_list.todo_items.all
     # puts ">>>>>>> #{@todo_lists.class}"
   end
@@ -15,7 +16,7 @@ class TodoListsController < ApplicationController
   # GET /todo_lists/1.json
   def show
     @todo_lists = TodoList.all
-    @todo_items = TodoItem.all
+    @todo_items = TodoItem.all.order('completed_at DESC')
   end
 
   # GET /todo_lists/new

@@ -13,6 +13,7 @@
               <div class="col-sm-8">
                 <strike class="complete"><p class="list_title"> <%= todo_list.title.capitalize%></p></strike></div>
               <div class="col-sm-4">
+              
                 <%= link_to incomplete_todo_list_path(todo_list.id),method: :patch do%>
                   <i class="fa fa-square item-icons uncheck" ></i>
                 <% end %>       
@@ -24,7 +25,12 @@
         <% else %>
             <div class="row">
               <div class="col-sm-8">
-                <p class="list_title"><%= link_to todo_list.title.capitalize, todo_list %></p>
+             
+                <% if todo_list.title.length > 15 %>
+                  <p class="list_title"><%= link_to todo_list.title[0,15].capitalize + "...", todo_list %></p>
+                <% else %>
+                   <p class="list_title"><%= link_to todo_list.title.capitalize, todo_list %></p>
+                <% end %>
               </div>
               <div class="col-sm-4">
                <%= link_to edit_todo_list_path(todo_list) do%>
@@ -49,9 +55,7 @@
     <% end %>
   </div>
 
-  <button onclick="myFunction()">Try it</button>
-
-<p id="demo"></p>
+  <%# <button onclick="myFunction()">Try it</button> %>
 <!--
   </br>
 
@@ -135,12 +139,6 @@
         <% end %>
      <% end %>
     <% end %>
-      
-   
-     
-           
-          
-
     </tbody>
   </table>
   </div>
